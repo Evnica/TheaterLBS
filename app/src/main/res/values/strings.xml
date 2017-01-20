@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Theaters</string>
+    <string name="imageRow">Marker</string>
 </resources>

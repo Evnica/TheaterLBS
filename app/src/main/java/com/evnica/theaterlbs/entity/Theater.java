@@ -10,9 +10,12 @@ package com.evnica.theaterlbs.entity;
 public class Theater {
 
     private String mTheaterName;
+    private String mTheaterDescription;
     private String mTheaterLocation;
     private double  mTheaterLongitude;
     private double mTheaterLatitude;
+    private String mThumbImage;
+    private String mDetailImage;
 
 
     //----------------------------------- Constructor ----------------------------------------------
@@ -26,17 +29,61 @@ public class Theater {
     }
 
     //---------------------------------- Getters and Setters ------------------------------------
-    public String getmTheaterName() {
+
+
+    public String getTheaterName() {
         return mTheaterName;
     }
-    public String getmTheaterLocation() {
+
+    public void setTheaterName(String mTheaterName) {
+        this.mTheaterName = mTheaterName;
+    }
+
+    public String getTheaterDescription() {
+        return mTheaterDescription;
+    }
+
+    public void setTheaterDescription(String mTheaterDescription) {
+        this.mTheaterDescription = mTheaterDescription;
+    }
+
+    public String getTheaterLocation() {
         return mTheaterLocation;
     }
-    public double getmTheaterLongitude() {
+
+    public void setTheaterLocation(String mTheaterLocation) {
+        this.mTheaterLocation = mTheaterLocation;
+    }
+
+    public double getTheaterLongitude() {
         return mTheaterLongitude;
     }
-    public double getmTheaterLatitude() {
+
+    public void setTheaterLongitude(double mTheaterLongitude) {
+        this.mTheaterLongitude = mTheaterLongitude;
+    }
+
+    public double getTheaterLatitude() {
         return mTheaterLatitude;
     }
 
+    public void setTheaterLatitude(double mTheaterLatitude) {
+        this.mTheaterLatitude = mTheaterLatitude;
+    }
+
+    public String getThumbImage() {
+        return mThumbImage;
+    }
+
+    public void setThumbImage(String mThumbImage) {
+        this.mThumbImage = mThumbImage;
+    }
+
+    public String getDetailImage() {
+        return mDetailImage;
+    }
+
+    public void setDetailImage(String mDetailImage) {
+        this.mDetailImage = mDetailImage;
+    }
 }
