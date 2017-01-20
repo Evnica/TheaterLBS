@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+>
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,8 +15,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@mipmap/drama_icon"
+        android:minHeight="125dp"
         android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:layout_alignBottom="@+id/theaterAddress"
+         />
 
     <TextView
         android:id="@+id/theaterName"

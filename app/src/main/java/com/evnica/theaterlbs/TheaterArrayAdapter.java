@@ -1,6 +1,9 @@
 package com.evnica.theaterlbs;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,8 @@ import android.widget.TextView;
 
 import com.evnica.theaterlbs.entity.Theater;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -47,8 +52,44 @@ public class TheaterArrayAdapter extends ArrayAdapter<Theater> {
         Theater currentTheater = mTheaters.get(position);
         theaterName.setText(currentTheater.getTheaterName());
         theaterAddress.setText(currentTheater.getTheaterLocation());
+        new GetImageTask(image).execute(currentTheater.getThumbImageLink());
 
         return rowView;
+    }
+
+
+    private class GetImageTask extends AsyncTask<String, Void, Bitmap>
+    {
+        ImageView image;
+
+        GetImageTask(ImageView image)
+        {
+            this.image = image;
+        }
+
+        // get an image
+        @Override
+        protected Bitmap doInBackground(String... params)
+        {
+
+            Bitmap thumbImage = null;
+
+            try{
+                InputStream in = new URL(params[0]).openStream();  // params[0] is image path link
+                thumbImage = BitmapFactory.decodeStream(in);
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            return thumbImage;
+        }
+
+        // display the image in the row
+        protected void onPostExecute(Bitmap bitmap)
+        {
+            image.setImageBitmap(bitmap);
+        }
+
     }
 
 }

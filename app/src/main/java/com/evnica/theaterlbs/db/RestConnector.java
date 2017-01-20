@@ -53,8 +53,8 @@ public class RestConnector
                 theater.setTheaterDescription(jsonobject.getString("LongDescription"));
                 theater.setTheaterLatitude(Double.parseDouble(jsonobject.getString("Latitude")));
                 theater.setTheaterLongitude(Double.parseDouble(jsonobject.getString("Longitude")));
-                theater.setThumbImage(jsonobject.getString("ThumbImageLink"));
-                theater.setDetailImage(jsonobject.getString("DetailImageLink"));
+                theater.setThumbImageLink(jsonobject.getString("ThumbImageLink"));
+                theater.setDetailImageLink(jsonobject.getString("DetailImageLink"));
 
                 theaters.add(theater);
             }

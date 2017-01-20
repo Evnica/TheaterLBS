@@ -14,8 +14,8 @@ public class Theater {
     private String mTheaterLocation;
     private double  mTheaterLongitude;
     private double mTheaterLatitude;
-    private String mThumbImage;
-    private String mDetailImage;
+    private String mThumbImageLink;
+    private String mDetailImageLink;
 
 
     //----------------------------------- Constructor ----------------------------------------------
@@ -71,19 +71,19 @@ public class Theater {
         this.mTheaterLatitude = mTheaterLatitude;
     }
 
-    public String getThumbImage() {
-        return mThumbImage;
+    public String getThumbImageLink() {
+        return mThumbImageLink;
     }
 
-    public void setThumbImage(String mThumbImage) {
-        this.mThumbImage = mThumbImage;
+    public void setThumbImageLink(String mThumbImage) {
+        this.mThumbImageLink = mThumbImage;
     }
 
-    public String getDetailImage() {
-        return mDetailImage;
+    public String getDetailImageLink() {
+        return mDetailImageLink;
     }
 
-    public void setDetailImage(String mDetailImage) {
-        this.mDetailImage = mDetailImage;
+    public void setDetailImageLink(String mDetailImage) {
+        this.mDetailImageLink = mDetailImage;
     }
 }
