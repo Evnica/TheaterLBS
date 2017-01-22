@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Theaters</string>
     <string name="imageRow">Marker</string>
+    <string name="add">Add to DB</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_db_detail">DbDetailActivity</string>
 </resources>
