@@ -1,6 +1,6 @@
-package com.evnica.theaterlbs.db;
+package com.evnica.theaterlbs.connect;
 
-import com.evnica.theaterlbs.entity.Theater;
+import com.evnica.theaterlbs.model.Theater;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,11 +48,11 @@ public class RestConnector
             {
                 jsonobject = jsonArray.getJSONObject(i);
                 Theater theater = new Theater();
-                theater.setTheaterName(jsonobject.getString("Title"));
-                theater.setTheaterLocation(jsonobject.getString("ShortDescription"));
-                theater.setTheaterDescription(jsonobject.getString("LongDescription"));
-                theater.setTheaterLatitude(Double.parseDouble(jsonobject.getString("Latitude")));
-                theater.setTheaterLongitude(Double.parseDouble(jsonobject.getString("Longitude")));
+                theater.setName(jsonobject.getString("Title"));
+                theater.setAddress(jsonobject.getString("ShortDescription"));
+                theater.setDescription(jsonobject.getString("LongDescription"));
+                theater.setLatitude(Double.parseDouble(jsonobject.getString("Latitude")));
+                theater.setLongitude(Double.parseDouble(jsonobject.getString("Longitude")));
                 theater.setThumbImageLink(jsonobject.getString("ThumbImageLink"));
                 theater.setDetailImageLink(jsonobject.getString("DetailImageLink"));
 
