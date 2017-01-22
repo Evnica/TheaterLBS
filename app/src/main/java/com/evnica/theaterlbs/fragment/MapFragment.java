@@ -97,16 +97,39 @@ public class MapFragment extends Fragment
                 }
                 GeoPoint point = new GeoPoint(lat, lon);
                 overlay.addOverlayItem(new OverlayItem(t.getName(), t.getAddress(), point));
-
+                double detlaLon = lonMax - lonMin;
                 GeoPoint center = new GeoPoint((latMax - latMin) / 2 + latMin,
-                        (lonMax - lonMin) / 2 + lonMin);
+                        (detlaLon) / 2 + lonMin);
                 controller.setCenter(center);
-                controller.setZoom(14);
+                controller.setZoom(calcZoomLevel(detlaLon));
             }
 
             mMap.getOverlays().add(overlay);
 
         }
+    }
+
+    private int calcZoomLevel(double deltaLon)
+    {
+        if (deltaLon > 180) return 1;
+        if (deltaLon > 90) return 2;
+        if (deltaLon > 45) return 3;
+        if (deltaLon > 22.5) return 4;
+        if (deltaLon > 11.25) return 5;
+        if (deltaLon > 5.625) return 6;
+        if (deltaLon > 2.813) return 7;
+        if (deltaLon > 1.406) return 8;
+        if (deltaLon > 0.703) return 9;
+        if (deltaLon > 0.352) return 10;
+        if (deltaLon > 0.176) return 11;
+        if (deltaLon > 0.088) return 12;
+        if (deltaLon > 0.044) return 13;
+        if (deltaLon > 0.022) return 14;
+        if (deltaLon > 0.011) return 15;
+        if (deltaLon > 0.005) return 16;
+        if (deltaLon > 0.003) return 17;
+        if (deltaLon > 0.001) return 18;
+        else return 19;
     }
 
 }

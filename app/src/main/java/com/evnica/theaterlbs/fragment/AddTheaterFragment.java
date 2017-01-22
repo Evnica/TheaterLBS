@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.evnica.theaterlbs.R;
@@ -29,8 +28,6 @@ import java.io.ByteArrayOutputStream;
 
 public class AddTheaterFragment extends Fragment
 {
-    private ListView mListView = null;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
