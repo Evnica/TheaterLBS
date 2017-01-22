@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 
+import com.evnica.theaterlbs.fragment.AddTheaterFragment;
 import com.evnica.theaterlbs.fragment.DbListFragment;
 import com.evnica.theaterlbs.fragment.MapFragment;
 import com.evnica.theaterlbs.fragment.TheaterListFragment;
@@ -27,5 +28,8 @@ public class MainActivity extends FragmentActivity {
 
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("OSM"),
                 MapFragment.class, null);
+
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("Add"),
+                AddTheaterFragment.class, null);
     }
 }

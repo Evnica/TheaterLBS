@@ -6,4 +6,12 @@
     <string name="back">Back</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_db_detail">DbDetailActivity</string>
+    <string name="create">Add a new theater</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
+    <string name="lon">Longitude</string>
+    <string name="lat">Latitude</string>
+    <string name="submit">Submit</string>
+
 </resources>

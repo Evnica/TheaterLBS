@@ -1,14 +1,26 @@
 package com.evnica.theaterlbs.connect;
 
+import android.util.Log;
+
 import com.evnica.theaterlbs.model.Theater;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by: Evnica
@@ -66,5 +78,78 @@ public class RestConnector
         }
 
         return theaters;
+    }
+
+    public boolean addTheaterToBackend(String name,
+                                       String longitude ,
+                                       String latitude,
+                                       String address,
+                                       String description,
+                                       String detailImageString,
+                                       String thumbImageString) {
+
+        String backend =
+        "http://geoweb06.cti.ac.at/lbs/2016/dariia/SilverStripe_Dariia/index.php/request/addLocation";
+
+        URL url;
+        String response = "Failed";
+        try {
+            url = new URL(backend);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+            //Request Body
+            HashMap<String, String> params = new HashMap<>();
+            params.put("Name", name);
+            params.put("ShortDescription", address);
+            params.put("LongDescription", description);
+            params.put("Longitude", longitude);
+            params.put("Latitude", latitude);
+            params.put("thumb_image_base64", thumbImageString);
+            params.put("detail_image_base64", detailImageString);
+
+            OutputStream outputStream = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(outputStream, "UTF-8"));
+            // getPostDataString makes a string from parameters according to HTTP standards
+            writer.write(getPostDataString(params));
+
+            writer.flush();
+            writer.close();
+            outputStream.close();
+
+            int responseCode=conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                response = new Scanner(conn.getInputStream(), "UTF-8").useDelimiter("\\A").next();
+                Log.d("NETWORK", response);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return !response.equals("Failed");
+    }
+
+    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for(Map.Entry<String, String> entry : params.entrySet()){
+            if (first)
+                first = false;
+            else
+                result.append("&");
+            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+        }
+
+        return result.toString();
     }
 }
