@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 
+import com.evnica.theaterlbs.fragment.DbListFragment;
 import com.evnica.theaterlbs.fragment.TheaterListFragment;
 
 public class MainActivity extends FragmentActivity {
@@ -20,5 +21,7 @@ public class MainActivity extends FragmentActivity {
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("Theaters"),
                 TheaterListFragment.class, null);
 
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("DB"),
+                DbListFragment.class, null);
     }
 }
