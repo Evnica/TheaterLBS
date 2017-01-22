@@ -1,5 +1,7 @@
 package com.evnica.theaterlbs;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 
@@ -21,6 +23,11 @@ public class CustomOverlay extends ItemizedOverlay<OverlayItem> {
 
     private ArrayList<OverlayItem> mOverlayItems = new ArrayList<>();
     private MapView mMapView;
+    private Context mContext;
+
+    public void setContext(Context context) {
+        this.mContext = context;
+    }
 
     public CustomOverlay(Drawable drawable, MapView mapView) {
         super(drawable);
@@ -44,6 +51,10 @@ public class CustomOverlay extends ItemizedOverlay<OverlayItem> {
 
     @Override
     protected boolean onTap(int index) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+        dialog.setTitle(mOverlayItems.get(index).getTitle());
+        dialog.setMessage(mOverlayItems.get(index).getSnippet());
+        dialog.show();
         return true;
     }
 

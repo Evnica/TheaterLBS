@@ -69,6 +69,7 @@ public class MapFragment extends Fragment
         protected void onPostExecute(ArrayList<Theater> theaters) {
             Drawable marker = ContextCompat.getDrawable(getActivity(), R.mipmap.drama_icon);
             CustomOverlay overlay = new CustomOverlay(marker, mMap);
+            overlay.setContext(getActivity());
             IMapController controller = mMap.getController();
             double latMin, latMax;
             latMin = latMax = theaters.get(0).getLatitude();
