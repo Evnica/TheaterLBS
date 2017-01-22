@@ -1,9 +1,6 @@
 package com.evnica.theaterlbs;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.evnica.theaterlbs.entity.Theater;
+import com.evnica.theaterlbs.connect.GetImageTask;
+import com.evnica.theaterlbs.model.Theater;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -50,46 +46,13 @@ public class TheaterArrayAdapter extends ArrayAdapter<Theater> {
         ImageView image = (ImageView)rowView.findViewById(R.id.imageView);
 
         Theater currentTheater = mTheaters.get(position);
-        theaterName.setText(currentTheater.getTheaterName());
-        theaterAddress.setText(currentTheater.getTheaterLocation());
+        theaterName.setText(currentTheater.getName());
+        theaterAddress.setText(currentTheater.getAddress());
         new GetImageTask(image).execute(currentTheater.getThumbImageLink());
 
         return rowView;
     }
 
 
-    private class GetImageTask extends AsyncTask<String, Void, Bitmap>
-    {
-        ImageView image;
-
-        GetImageTask(ImageView image)
-        {
-            this.image = image;
-        }
-
-        // get an image
-        @Override
-        protected Bitmap doInBackground(String... params)
-        {
-
-            Bitmap thumbImage = null;
-
-            try{
-                InputStream in = new URL(params[0]).openStream();  // params[0] is image path link
-                thumbImage = BitmapFactory.decodeStream(in);
-
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-            return thumbImage;
-        }
-
-        // display the image in the row
-        protected void onPostExecute(Bitmap bitmap)
-        {
-            image.setImageBitmap(bitmap);
-        }
-
-    }
 
 }
