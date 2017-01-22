@@ -42,9 +42,9 @@ public class AddTheaterFragment extends Fragment
 
         View fragmentView = inflater.inflate(R.layout.fragment_add_theater, container, false);
 
-        final EditText title = (EditText)fragmentView.findViewById(R.id.name);
-        final EditText shortDescription = (EditText)fragmentView.findViewById(R.id.address);
-        final EditText longDescription = (EditText)fragmentView.findViewById(R.id.description);
+        final EditText name = (EditText)fragmentView.findViewById(R.id.name);
+        final EditText address = (EditText)fragmentView.findViewById(R.id.address);
+        final EditText description = (EditText)fragmentView.findViewById(R.id.description);
         final EditText latitude = (EditText)fragmentView.findViewById(R.id.latitude);
         final EditText longitude = (EditText)fragmentView.findViewById(R.id.longitude);
         Button submit = (Button)fragmentView.findViewById(R.id.btnSubmit);
@@ -54,9 +54,9 @@ public class AddTheaterFragment extends Fragment
             @Override
             public void onClick(View v) {
 
-                if (title.getText() != null && title.getText().toString().length() > 0 &&
-                        shortDescription.getText() != null && shortDescription.getText().toString().length() > 0 &&
-                        longDescription.getText() != null && longDescription.getText().toString().length() > 0 &&
+                if (name.getText() != null && name.getText().toString().length() > 0 &&
+                        address.getText() != null && address.getText().toString().length() > 0 &&
+                        description.getText() != null && description.getText().toString().length() > 0 &&
                         longitude.getText() != null && longitude.getText().toString().length() > 0 &&
                         latitude.getText() != null && latitude.getText().toString().length() > 0
                         )
@@ -83,15 +83,21 @@ public class AddTheaterFragment extends Fragment
                         String base64detailImage = Base64.encodeToString(bytes2, Base64.DEFAULT);
 
 
-                        new PostTask(title.getText().toString(),
-                                shortDescription.getText().toString(),
-                                longDescription.getText().toString(),
+                        new PostTask(name.getText().toString(),
+                                address.getText().toString(),
+                                description.getText().toString(),
                                 latitude.getText().toString(),
                                 longitude.getText().toString(),
                                 base64thumbImage, base64detailImage).execute();
 
                         Toast.makeText(getActivity(),
                                 "Done", Toast.LENGTH_LONG).show();
+
+                        name.setText("");
+                        address.setText("");
+                        description.setText("");
+                        latitude.setText("");
+                        longitude.setText("");
                     }
                     catch (Exception e)
                     {
