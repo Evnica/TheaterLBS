@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.TheaterArrayAdapter;
-import com.evnica.theaterlbs.TheaterDetailActivity;
+import com.evnica.theaterlbs.activity.TheaterDetailActivity;
 import com.evnica.theaterlbs.connect.RestConnector;
 import com.evnica.theaterlbs.model.Theater;
 

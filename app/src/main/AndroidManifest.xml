@@ -17,18 +17,18 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DBDetailActivity"
+            android:name=".activity.DBDetailActivity"
             android:label="@string/title_activity_db_detail" >
         </activity>
         <activity
-            android:name=".TheaterDetailActivity"
+            android:name=".activity.TheaterDetailActivity"
             android:label="@string/title_activity_detail" >
         </activity>
 

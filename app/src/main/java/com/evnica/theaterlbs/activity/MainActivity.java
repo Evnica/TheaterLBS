@@ -1,9 +1,10 @@
-package com.evnica.theaterlbs;
+package com.evnica.theaterlbs.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 
+import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.fragment.AddTheaterFragment;
 import com.evnica.theaterlbs.fragment.DbListFragment;
 import com.evnica.theaterlbs.fragment.MapFragment;

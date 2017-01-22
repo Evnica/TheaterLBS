@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.evnica.theaterlbs.DBDetailActivity;
 import com.evnica.theaterlbs.GlobalIds;
 import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.TheaterArrayAdapter;
+import com.evnica.theaterlbs.activity.DBDetailActivity;
 import com.evnica.theaterlbs.connect.LocalDBHandler;
 import com.evnica.theaterlbs.model.Theater;
 

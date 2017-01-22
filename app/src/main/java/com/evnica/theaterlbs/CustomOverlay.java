@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class CustomOverlay extends ItemizedOverlay<OverlayItem> {
 
-    private ArrayList<OverlayItem> mOverlayItems = new ArrayList<OverlayItem>();
+    private ArrayList<OverlayItem> mOverlayItems = new ArrayList<>();
     private MapView mMapView;
 
     public CustomOverlay(Drawable drawable, MapView mapView) {
