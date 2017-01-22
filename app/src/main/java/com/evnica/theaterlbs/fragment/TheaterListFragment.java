@@ -1,5 +1,6 @@
 package com.evnica.theaterlbs.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +13,9 @@ import android.widget.ListView;
 
 import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.TheaterArrayAdapter;
-import com.evnica.theaterlbs.db.RestConnector;
-import com.evnica.theaterlbs.entity.Theater;
+import com.evnica.theaterlbs.TheaterDetailActivity;
+import com.evnica.theaterlbs.connect.RestConnector;
+import com.evnica.theaterlbs.model.Theater;
 
 import java.util.ArrayList;
 
@@ -45,6 +47,11 @@ public class TheaterListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //TODO: open DetailActivity on item click
+                Theater theater = theaters.get(position);
+                        //(Theater)mMainListView.getAdapter().getItem(position);
+                Intent intent = new Intent(getActivity(), TheaterDetailActivity.class);
+                intent.putExtra("theaterAsArray", theater.toStringArray());
+                startActivity(intent);
             }
         });
 
@@ -59,7 +66,8 @@ public class TheaterListFragment extends Fragment {
         @Override
         protected ArrayList<Theater> doInBackground(String... params) {
 
-            return RestConnector.getsInstance().getData();
+            theaters = RestConnector.getsInstance().getData();
+            return theaters;
         }
 
         @Override
