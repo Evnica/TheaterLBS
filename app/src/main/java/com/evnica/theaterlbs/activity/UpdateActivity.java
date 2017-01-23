@@ -13,6 +13,8 @@ import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.connect.LocalDBHandler;
 import com.evnica.theaterlbs.model.Theater;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by: Evnica
  * Date: 22.01.2017
@@ -24,6 +26,7 @@ public class UpdateActivity extends FragmentActivity
 {
 
     String mName;
+    DecimalFormat decimalFormat = new DecimalFormat("###.0#######");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,9 +48,9 @@ public class UpdateActivity extends FragmentActivity
         name.setEnabled(false);
         address.setText(current.getAddress());
         description.setText(current.getDescription());
-        String lat = current.getLatitude() + "";
+        String lat = decimalFormat.format(current.getLatitude());
         latitude.setText(lat);
-        String lon = current.getLongitude() + "";
+        String lon = decimalFormat.format(current.getLongitude());
         longitude.setText(lon);
 
         Button cancel = (Button)findViewById(R.id.btnCancel);

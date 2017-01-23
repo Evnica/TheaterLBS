@@ -26,7 +26,7 @@ import java.text.DecimalFormat;
 public class DBDetailActivity extends FragmentActivity
 {
     String imageLink;
-    DecimalFormat decimalFormat = new DecimalFormat("###.########");
+    DecimalFormat decimalFormat = new DecimalFormat("###.0#######");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -99,6 +99,7 @@ public class DBDetailActivity extends FragmentActivity
             @Override
             public void onClick(View v) {
                 delete(name);
+                finish();
             }
         });
 
