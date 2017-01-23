@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.evnica.theaterlbs.GlobalIds;
 import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.TheaterArrayAdapter;
 import com.evnica.theaterlbs.activity.DBDetailActivity;
@@ -47,7 +46,6 @@ public class DbListFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View fragmentView = inflater.inflate(R.layout.fragment_db_list, container, false);
-        GlobalIds.dbListId = this.getId();
         mListView = (ListView)fragmentView.findViewById(R.id.listView);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,15 +62,11 @@ public class DbListFragment extends Fragment
         return fragmentView;
     }
 
-    /*@Override
+    @Override
     public void onResume() {
+        new DbTask().execute();
         super.onResume();
-        if (mNeedsRefreshment)
-        {
-            mNeedsRefreshment = false;
-
-        }
-    }*/
+    }
 
     class DbTask extends AsyncTask<String, Void, ArrayList<Theater>>
     {
