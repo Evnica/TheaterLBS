@@ -13,5 +13,9 @@
     <string name="lon">Longitude</string>
     <string name="lat">Latitude</string>
     <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="update_activity">UpdateActivity</string>
+    <string name="updateTheater">Update theater data</string>
 
 </resources>

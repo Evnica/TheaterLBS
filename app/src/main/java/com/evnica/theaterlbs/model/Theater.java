@@ -20,12 +20,13 @@ public class Theater {
 
     //----------------------------------- Constructor ----------------------------------------------
     public Theater(){}
-    public Theater(String theaterName, String theaterLocation,
-                   double theaterLongitude, double theaterLatitude) {
-        mName = theaterName;
-        mAddress = theaterLocation;
-        mLongitude = theaterLongitude;
-        mLatitude = theaterLatitude;
+    public Theater(String name, String address, String description,
+                   double longitude, double latitude) {
+        mName = name;
+        mDescription = description;
+        mAddress = address;
+        mLongitude = longitude;
+        mLatitude = latitude;
     }
 
     public String[] toStringArray()

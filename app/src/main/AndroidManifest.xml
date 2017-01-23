@@ -31,6 +31,10 @@
             android:name=".activity.TheaterDetailActivity"
             android:label="@string/title_activity_detail" >
         </activity>
+        <activity
+            android:name=".activity.UpdateActivity"
+            android:label="@string/update_activity" >
+        </activity>
 
     </application>
 

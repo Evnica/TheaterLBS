@@ -89,7 +89,7 @@ public class LocalDBHandler extends SQLiteOpenHelper {
 
     public List<Theater> getTheaters(){
 
-        List<Theater> locations = new LinkedList<>();
+        List<Theater> theaters = new LinkedList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_THEATERS;
@@ -106,12 +106,12 @@ public class LocalDBHandler extends SQLiteOpenHelper {
             theater.setThumbImageLink(cursor.getString(6));
             theater.setDetailImageLink(cursor.getString(7));
 
-            locations.add(theater);
+            theaters.add(theater);
         }
 
         cursor.close();
         db.close();
-        return  locations;
+        return  theaters;
     }
 
     public boolean deleteTheater(String name)
@@ -132,6 +132,55 @@ public class LocalDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+
+    public Theater getTheater(String name){
+
+        List<Theater> theaters = new LinkedList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_THEATERS + " WHERE name = \"" + name +"\"";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()){
+
+            Theater theater = new Theater();
+            theater.setName(cursor.getString(1));
+            theater.setAddress(cursor.getString(2));
+            theater.setDescription(cursor.getString(3));
+            theater.setLongitude(cursor.getFloat(4));
+            theater.setLatitude(cursor.getFloat(5));
+            theater.setThumbImageLink(cursor.getString(6));
+            theater.setDetailImageLink(cursor.getString(7));
+
+            theaters.add(theater);
+        }
+
+        cursor.close();
+        db.close();
+        return  theaters.get(0);
+    }
+
+    public boolean updateTheater(String currentName, Theater theater)
+    {
+        boolean result;
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(KEY_ADDRESS, theater.getAddress());
+            values.put(KEY_DESCRIPTION, theater.getDescription());
+            values.put(KEY_LONGITUDE, theater.getLongitude());
+            values.put(KEY_LATITUDE, theater.getLatitude());
+            db.update(TABLE_THEATERS, values, KEY_NAME + " = ?", new String[]{String.valueOf(currentName)});
+            db.close();
+            result = true;
+        }
+        catch (Exception e)
+        {
+            result = false;
+        }
+        return result;
     }
 
 

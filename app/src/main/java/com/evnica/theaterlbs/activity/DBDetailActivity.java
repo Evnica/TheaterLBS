@@ -1,5 +1,6 @@
 package com.evnica.theaterlbs.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -30,14 +31,13 @@ public class DBDetailActivity extends FragmentActivity
 
         String[] theaterAsArray = getIntent().getStringArrayExtra("theaterAsArray");
         final String name = theaterAsArray[0];
-
         String coordinates = theaterAsArray[3] + ", " + theaterAsArray[4];
         ((TextView)findViewById(R.id.name)).setText(name);
         ((TextView)findViewById(R.id.description)).setText(theaterAsArray[2]);
         ((TextView)findViewById(R.id.coords)).setText(coordinates);
-
         ImageView image = (ImageView)findViewById(R.id.imageView);
         new GetImageTask(image).execute(theaterAsArray[6]);
+
 
         Button back = (Button)findViewById(R.id.backButton);
         back.setOnClickListener(new View.OnClickListener() {
@@ -48,11 +48,20 @@ public class DBDetailActivity extends FragmentActivity
         });
 
         final Button delete = (Button)findViewById(R.id.delete);
-
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 delete(name);
+            }
+        });
+
+        Button update = (Button)findViewById(R.id.update);
+        final Intent intent = new Intent(this, UpdateActivity.class);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("name", name);
+                startActivity(intent);
             }
         });
 
