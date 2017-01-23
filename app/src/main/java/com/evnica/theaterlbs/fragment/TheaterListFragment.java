@@ -46,7 +46,6 @@ public class TheaterListFragment extends Fragment {
         mMainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //TODO: open DetailActivity on item click
                 Theater theater = theaters.get(position);
                         //(Theater)mMainListView.getAdapter().getItem(position);
                 Intent intent = new Intent(getActivity(), TheaterDetailActivity.class);

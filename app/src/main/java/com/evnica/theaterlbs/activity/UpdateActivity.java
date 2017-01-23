@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.evnica.theaterlbs.GlobalVars;
 import com.evnica.theaterlbs.R;
 import com.evnica.theaterlbs.connect.LocalDBHandler;
 import com.evnica.theaterlbs.model.Theater;
@@ -70,7 +71,9 @@ public class UpdateActivity extends FragmentActivity
 
                 Theater t = new Theater(name.getText().toString(),
                         address.getText().toString(), description.getText().toString(), x, y);
+                GlobalVars.updatedTheater = t;
                 update(current.getName(), t);
+                GlobalVars.justUpdated = true;
                 }
                 catch (Exception e)
                 {
