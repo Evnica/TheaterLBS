@@ -64,7 +64,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
                 android:ems="10"
                 android:id="@+id/address"
                 android:paddingBottom="6dp"
@@ -91,7 +92,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
+                android:maxLines="20"
                 android:ems="10"
                 android:id="@+id/description"
                 android:paddingBottom="6dp"
